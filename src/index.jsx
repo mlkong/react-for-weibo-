@@ -5,6 +5,9 @@ import { connect, Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import { BrowserRouter as Router, Route,Redirect, Link } from "react-router-dom";
+import $ from'jquery/dist/jquery.min'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min'
 
 import rootReducer from './reducers/index';
 import * as actionCreators from './actions/index';

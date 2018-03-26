@@ -3,7 +3,9 @@ import React, { PropTypes } from 'react';
 class Login extends React.Component {
     render() {
         return (
-            <h1>login0000000000000000000</h1>
+            <div>
+                {/*<h1 className={`${a} text-center ${b === true?1111:22222}`}>login0000000000000000000</h1>*/}
+            </div>
         )
     }
 }

@@ -91,6 +91,8 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^1.12.4",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
