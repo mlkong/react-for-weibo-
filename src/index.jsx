@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route,Redirect, Link } from "react-router-dom"
 import $ from'jquery/dist/jquery.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
+import './assets/css/main.css'
+import './assets/js'
 
 import rootReducer from './reducers/index';
 import * as actionCreators from './actions/index';
@@ -22,7 +24,7 @@ const store = applyMiddleware(
 )(createStore)(rootReducer);
 
 // create root component based on component Deskmark
-const App = connect(
+const LoginC = connect(
     state => ({ state }),
     dispatch => ({
         actions: bindActionCreators(actionCreators, dispatch),
@@ -41,7 +43,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <div>
-                <Route exact path="/" component={App}/>
+                <Route exact path="/" component={LoginC}/>
                 <Route path="/index" component={Index}/>
             </div>
         </Router>

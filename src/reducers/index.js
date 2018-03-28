@@ -1,3 +1,6 @@
-export default function test () {
-    return 1111
-}
+import { combineReducers } from 'redux';
+import logn from './login';
+
+export default combineReducers({
+    logn
+});

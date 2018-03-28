@@ -1,6 +1,6 @@
 import $ from 'jquery/dist/jquery.min'
 
-function getUrl(url, options){
+export function getUrl(url, options){
     return new Promise((resolve, reject) => {
         $.ajax({
             type : "get",
@@ -18,7 +18,7 @@ function getUrl(url, options){
     })
 }
 
-function postUrl(url, options){
+export function postUrl(url, options){
     return new Promise((resolve, reject) => {
         $.ajax({
             type : "get",
@@ -35,9 +35,3 @@ function postUrl(url, options){
         })
     })
 }
-
-
-module.exports={
-    getUrl: getUrl,
-    postUrl: postUrl
-};
