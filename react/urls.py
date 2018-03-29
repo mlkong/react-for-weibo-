@@ -20,4 +20,5 @@ from weibo import views
 urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'userLogin', views.userLogin),
+    path(r'VerifyCode', views.VerifyCode),
 ]

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'weibo',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
+    'localhost:3001',
     '127.0.0.1:3000'
 )
 
@@ -116,7 +118,7 @@ DATABASES = {
 DATABASES = {
 		    'default': {
 		    'ENGINE': 'django.db.backends.mysql',
-		    'NAME':'mysite',
+		    'NAME':'reactDatabase',
 		    'USER': 'root',
 		    'PASSWORD': '123456',
 		    'HOST': 'localhost',

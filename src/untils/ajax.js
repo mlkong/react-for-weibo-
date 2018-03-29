@@ -5,7 +5,6 @@ export function getUrl(url, api, options){
         $.ajax({
             type : "get",
             url : url,
-            data: options,
             success : function(data){
                 return resolve(data);
             },
