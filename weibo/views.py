@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
+import json
 
-# Create your views here.
+
+def userLogin(request):
+    DATA = {
+        'a': "111111",
+        'b': "222222222222"
+    }
+    return HttpResponse(json.dumps(DATA), content_type="application/json")

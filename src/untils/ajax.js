@@ -1,12 +1,10 @@
 import $ from 'jquery/dist/jquery.min'
 
-export function getUrl(url, options){
+export function getUrl(url, api, options){
     return new Promise((resolve, reject) => {
         $.ajax({
             type : "get",
-            async: true,
             url : url,
-            dataType : "json",
             data: options,
             success : function(data){
                 return resolve(data);
@@ -18,19 +16,19 @@ export function getUrl(url, options){
     })
 }
 
-export function postUrl(url, options){
+export function postUrl(url, api, options){
     return new Promise((resolve, reject) => {
         $.ajax({
-            type : "get",
-            async: true,
-            url : url,
-            dataType : "json",
+            type : "post",
+            url : url+api,
             data: options,
             success : function(data){
+                console.log("POST 请求数据成功：", data);
                 return resolve(data);
             },
             error:function(err){
-                return reject(err)
+                console.log("POST 请求数据失败：", err);
+                return reject(new Error(err))
             }
         })
     })

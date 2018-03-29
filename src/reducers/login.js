@@ -8,24 +8,28 @@ export default function BtnLogin (state={}, action) {
 
     switch(type){
         case fulfilledOf( constants.Login_Args ):
+            console.log("正确完成");
             return {
                 ...state,
-                a:1
+                a:"RESOVE"
             };
 
         case rejectedOf( constants.Login_Args ):
+            console.log("完成抛错");
             return {
                 ...state,
-                b:1
+                a:"REJECTED"
             };
 
         case pendingOf( constants.Login_Args ):
+             console.log("pending开始");
             return {
                 ...state,
-                c:1
+                a:'PENGDING'
             };
 
         default:
+            console.log("初始化，来自登录");
             return state
     }
 }

@@ -10,9 +10,11 @@ class Login extends React.Component {
     }
 
     submitBtn(){
-        this.props.actions.BtnLogin('4545').then( result => {
+        console.log("登录请求开始", this.props.state);
+        this.props.actions.BtnLogin('/userLogin', {a:1,b:3}).then( result => {
+            console.log("登录请求完成", this.props.state);
         }).catch( err => {
-            console.log(this.props.state);
+            console.log("登录请求失败", this.props.state);
         });
     }
 

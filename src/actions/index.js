@@ -5,9 +5,9 @@ export const pendingOf = actionType => `${actionType}_PENDING`;
 export const fulfilledOf = actionType => `${actionType}_FULFILLED`;
 export const rejectedOf = actionType => `${actionType}_REJECTED`;
 
-export function BtnLogin( args ){
+export function BtnLogin(api, options){
     return {
         type: constants.Login_Args,
-        payload: storages.BtnLogin(args)
+        payload: storages.BtnLogin(api, options)
     }
 }
