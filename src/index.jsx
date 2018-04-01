@@ -43,8 +43,8 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <div>
-                <Route exact path="/" component={LoginC}/>
-                <Route path="/index" component={Index}/>
+                <Route exact path="/" component={Index}/>
+                <Route path="/login" component={LoginC}/>
             </div>
         </Router>
     </Provider>,

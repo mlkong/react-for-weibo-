@@ -1,31 +1,33 @@
 import * as actionTypes from '../actions/index'
 import * as constants from '../constants/constants'
+import Cookies from 'js-cookie/src/js.cookie'
 
 const { pendingOf, fulfilledOf, rejectedOf } = actionTypes;
 
-export default function BtnLogin (state={}, action) {
+export default function BtnLogin (state={islogin: false,}, action) {
     const { type, payload } = action;
 
     switch(type){
         case fulfilledOf( constants.Login_Args ):
             console.log("正确完成");
+            Cookies.set('react-islogin', payload.msg, { path: '' });
             return {
                 ...state,
-                a:"RESOVE"
+                islogin: true,
             };
 
         case rejectedOf( constants.Login_Args ):
             console.log("完成抛错");
             return {
                 ...state,
-                a:"REJECTED"
+                islogin: false,
             };
 
         case pendingOf( constants.Login_Args ):
              console.log("pending开始");
             return {
                 ...state,
-                a:'PENGDING'
+                islogin: false,
             };
 
         default:

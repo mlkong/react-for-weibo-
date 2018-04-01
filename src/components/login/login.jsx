@@ -1,4 +1,7 @@
 import React, { PropTypes } from 'react';
+import * as getUuid from '../../untils/uuidCreate'
+import Cookies from 'js-cookie/src/js.cookie'
+import { Redirect } from "react-router-dom";
 import './login.css'
 
 class Login extends React.Component {
@@ -7,13 +10,18 @@ class Login extends React.Component {
 
         this.state = {
             url: 'http://127.0.0.1:8008',
-            imgCode: '/VerifyCode',
+            imgCode: '/VerifyCode?id=',
+            imgId: getUuid.getUuid(),
             avoidLogin: false,
         };
 
         this.submitBtn = this.submitBtn.bind(this);
         this.VerifyCode = this.VerifyCode.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
+    }
+
+    componentDidMount(){
+        let loginState = Cookies.get('react-islogin');
     }
 
     submitBtn(){
@@ -26,8 +34,10 @@ class Login extends React.Component {
             email: email,
             passwd: passwd,
             verify: verify,
-            accessLogin: String(accessLogin)
+            accessLogin: String(accessLogin),
+            imgId:this.state.imgId
         };
+
         this.props.actions.BtnLogin('/userLogin', data).then( result => {
             console.log("登录请求完成", this.props.state);
         }).catch( err => {
@@ -36,7 +46,10 @@ class Login extends React.Component {
     }
 
     VerifyCode(){
-        this.refs.imgFresh.setAttribute('src', this.refs.imgFresh.getAttribute('src')+'?');
+        this.setState({
+            imgId: getUuid.getUuid(),
+        });
+        this.refs.imgFresh.setAttribute('src', this.state.url+this.state.imgCode+this.state.imgId);
     }
 
     handleCheck(){
@@ -59,6 +72,9 @@ class Login extends React.Component {
     }
 
     render() {
+        if(Cookies.get('react-islogin')){
+            return <Redirect push to="/" />
+        }
         const { state, actions } = this.props;
 
         return (
@@ -87,7 +103,7 @@ class Login extends React.Component {
                                         <input type="text" className="form-control" ref='verify' id="inputPassword4" placeholder="验证码"/>
                                     </div>
                                     <div className='col-sm-4'>
-                                        <img className="cursorSate" ref='imgFresh' src={this.state.url+this.state.imgCode} onClick={this.VerifyCode} alt="点击刷新"/>
+                                        <img className="cursorSate" ref='imgFresh' src={this.state.url+this.state.imgCode+this.state.imgId} onClick={this.VerifyCode} alt="点击刷新"/>
                                     </div>
                                 </div>
 
