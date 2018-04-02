@@ -9,7 +9,7 @@ class Login extends React.Component {
         super(props);
 
         this.state = {
-            url: 'http://127.0.0.1:8008',
+            url: 'http://192.168.1.5:8008',
             imgCode: '/VerifyCode?id=',
             imgId: getUuid.getUuid(),
             avoidLogin: false,

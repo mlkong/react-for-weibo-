@@ -10,7 +10,11 @@ export default function BtnLogin (state={islogin: false,}, action) {
     switch(type){
         case fulfilledOf( constants.Login_Args ):
             console.log("正确完成");
-            Cookies.set('react-islogin', payload.msg, { path: '' });
+            if(payload.status === "error"){
+                console.log(payload.msg)
+            }else if(payload.status === "success"){
+                Cookies.set('react-islogin', payload.msg, { path: '' });
+            }
             return {
                 ...state,
                 islogin: true,

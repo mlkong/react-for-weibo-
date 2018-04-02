@@ -34,6 +34,7 @@ def userLogin(request):
 
 
 from untils.check_code import create_validate_code
+from django.core.handlers.wsgi import WSGIRequest
 def VerifyCode(request):
     auuid = request.GET.get('id')
 
@@ -42,4 +43,11 @@ def VerifyCode(request):
     img.save(stream, 'PNG')
 
     cache.set(auuid, code, 60*5)
+    print(1111111111111, request.environ['HTTP_USER_AGENT'] )
+
+    if 'HTTP_X_FORWARDED_FOR' in request.META:
+        ip = request.META['HTTP_X_FORWARDED_FOR']
+    else:
+        ip = request.META['REMOTE_ADDR']
+    print(ip)
     return HttpResponse(stream.getvalue())
